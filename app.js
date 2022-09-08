@@ -8,7 +8,6 @@ const todoButton = () =>{
   const inputText = getDocumentId('todo-text');
   const inputValue = inputText.value;
   
-  console.log(inputText.value)
   if(inputText.value == ''){
     return alert('input-field is empty');
   }
@@ -42,8 +41,6 @@ const clearList = () =>{
   localStorage.removeItem('Todos');
   showLiList();
 }
-
-
 
 const showLiList = () =>{
   const ulContainer = getDocumentId('ul-container');
