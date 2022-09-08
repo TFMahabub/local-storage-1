@@ -12,7 +12,7 @@ const todoButton = () =>{
     return alert('input-field is empty');
   }
   else if(!isNaN(inputText.value)){
-    return alert('dsfjasdfh')
+    return alert('number is not allowed')
   }
   else if(!TodosItems){
     const add = [
