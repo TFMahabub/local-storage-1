@@ -68,5 +68,6 @@ const clearitem = index =>{
   const existingEntries = JSON.parse(localStorage.getItem("Todos"));
   existingEntries.splice(index, 1);
   localStorage.setItem("Todos", JSON.stringify(existingEntries));
+  showLiList();
 }
 
