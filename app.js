@@ -2,7 +2,7 @@ const getDocumentId = id =>{
   const catchId = document.getElementById(id);
   return catchId;
 }
-
+//----------------------------------------------
 const todoButton = () =>{
   const TodosItems = JSON.parse(localStorage.getItem('Todos'));
   const inputText = getDocumentId('todo-text');
@@ -35,13 +35,12 @@ const todoButton = () =>{
   inputText.value = '';
   showLiList();
 }
-
-
+//-----------------------------------------------
 const clearList = () =>{
   localStorage.removeItem('Todos');
   showLiList();
 }
-
+//-----------------------------------------------
 const showLiList = () =>{
   const ulContainer = getDocumentId('ul-container');
   const TodosItems = JSON.parse(localStorage.getItem('Todos'));
@@ -59,10 +58,8 @@ const showLiList = () =>{
     ulContainer.appendChild(creatUl);
   });
 }
-
-
+//------------------------------------------------------
 showLiList();
-
 const clearitem = index =>{
   const existingEntries = JSON.parse(localStorage.getItem("Todos"));
   existingEntries.splice(index, 1);
