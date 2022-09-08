@@ -47,12 +47,14 @@ const showLiList = () =>{
   const TodosItems = JSON.parse(localStorage.getItem('Todos'));
   ulContainer.innerHTML =``;
   TodosItems?.forEach((element, index) => {
-    const creatUl = document.createElement('ul');
+    const creatUl = document.createElement('div');
     creatUl.innerHTML=`
+        <ul class="flex justify-between py-2">
         <li>${element.title}</li>
-        <button onclick="clearitem('${index}')" title="Clear All" class="mr-4">
+        <button onclick="clearitem('${index}')" title="Clear All" class="inline-block mr-4">
           <i class="fa-solid fa-square-minus text-[30px] text-red-400"></i>
         </button>
+        </ul>
     `
     ulContainer.appendChild(creatUl);
   });
