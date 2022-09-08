@@ -9,7 +9,11 @@ const todoButton = () =>{
   const inputValue = inputText.value;
   inputText.value = '';
 
-  if(!TodosItems){
+  if(!inputValue){
+    return alert('input-field is empty');
+  }
+
+  else if(!TodosItems){
     const add = [
       {
         title: inputValue,
@@ -27,11 +31,14 @@ const todoButton = () =>{
     ]
     localStorage.setItem('Todos', JSON.stringify(add))
   }
-  showLiList()
+  showLiList();
 }
 
 
-
+const clearList = () =>{
+  localStorage.removeItem('Todos');
+  showLiList();
+}
 
 
 
@@ -39,7 +46,7 @@ const showLiList = () =>{
   const ulContainer = getDocumentId('ul-container');
   const TodosItems = JSON.parse(localStorage.getItem('Todos'));
   ulContainer.innerHTML =``;
-  TodosItems.forEach(element => {
+  TodosItems?.forEach(element => {
     const creatUl = document.createElement('ul');
     creatUl.innerHTML=`
         <li>${element.title}</li>
@@ -53,14 +60,8 @@ const showLiList = () =>{
 }
 
 
-showLiList()
-
-const clearitem = () =>{
-  console.log('clicked')
-}
+showLiList();
 
 
 
-const clearList = () =>{
-  localStorage.removeItem('Todos');
-}
+
