@@ -7,12 +7,14 @@ const todoButton = () =>{
   const TodosItems = JSON.parse(localStorage.getItem('Todos'));
   const inputText = getDocumentId('todo-text');
   const inputValue = inputText.value;
-  inputText.value = '';
-
-  if(!inputValue){
+  
+  console.log(inputText.value)
+  if(inputText.value == ''){
     return alert('input-field is empty');
   }
-
+  else if(!isNaN(inputText.value)){
+    return alert('dsfjasdfh')
+  }
   else if(!TodosItems){
     const add = [
       {
@@ -31,6 +33,7 @@ const todoButton = () =>{
     ]
     localStorage.setItem('Todos', JSON.stringify(add))
   }
+  inputText.value = '';
   showLiList();
 }
 
@@ -46,15 +49,14 @@ const showLiList = () =>{
   const ulContainer = getDocumentId('ul-container');
   const TodosItems = JSON.parse(localStorage.getItem('Todos'));
   ulContainer.innerHTML =``;
-  TodosItems?.forEach(element => {
+  TodosItems?.forEach((element, index) => {
     const creatUl = document.createElement('ul');
     creatUl.innerHTML=`
         <li>${element.title}</li>
-        <button onclick="clearitem()" title="Clear All" class="mr-4">
+        <button onclick="clearitem('${index}')" title="Clear All" class="mr-4">
           <i class="fa-solid fa-square-minus text-[30px] text-red-400"></i>
         </button>
     `
-    console.log(element)
     ulContainer.appendChild(creatUl);
   });
 }
@@ -62,6 +64,9 @@ const showLiList = () =>{
 
 showLiList();
 
-
-
+const clearitem = index =>{
+  const existingEntries = JSON.parse(localStorage.getItem("Todos"));
+  existingEntries.splice(index, 1);
+  localStorage.setItem("Todos", JSON.stringify(existingEntries));
+}
 
