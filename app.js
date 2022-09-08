@@ -46,6 +46,7 @@ const showLiList = () =>{
   const TodosItems = JSON.parse(localStorage.getItem('Todos'));
   ulContainer.innerHTML =``;
   TodosItems?.forEach((element, index) => {
+    console.log(index);
     const creatUl = document.createElement('div');
     creatUl.innerHTML=`
         <ul class="flex justify-between py-2">
@@ -61,6 +62,7 @@ const showLiList = () =>{
 //------------------------------------------------------
 showLiList();
 const clearitem = index =>{
+  console.log(index);
   const existingEntries = JSON.parse(localStorage.getItem("Todos"));
   existingEntries.splice(index, 1);
   localStorage.setItem("Todos", JSON.stringify(existingEntries));
